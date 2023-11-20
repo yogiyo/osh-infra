@@ -1,0 +1,21 @@
+pod:
+  replicas:
+    server: 4
+    prometheus_rabbitmq_exporter: 1
+
+network:
+  host_namespace: false
+  management:
+    ingress:
+      public: true
+      classes:
+        namespace: "nginx"
+        cluster: "nginx"
+      annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /
+
+volume:
+  chown_on_start: true
+  enabled: true
+  class_name: ceph-rbd
+  size: 768Mi
