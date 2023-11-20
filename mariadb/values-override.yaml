@@ -1,0 +1,51 @@
+pod:
+  replicas:
+    server: 3
+    ingress: 3
+
+volume:
+  class_name: ceph-rbd
+  size: 50Gi
+
+# values, but should include all endpoints
+# required by this chart
+endpoints:
+  oslo_db:
+    auth:
+      admin:
+        username: root
+        password: lgwXHkx6ZbK04RFFoE+JyQ==
+  identity:
+    name: backup-storage-auth
+    namespace: openstack
+    auth:
+      admin:
+        # Auth URL of null indicates local authentication
+        # HTK will form the URL unless specified here
+        auth_url: null
+        region_name: RegionOne
+        username: admin
+        password: password
+        project_name: admin
+        user_domain_name: default
+        project_domain_name: default
+      mariadb:
+        # Auth URL of null indicates local authentication
+        # HTK will form the URL unless specified here
+        auth_url: null
+        role: admin
+        region_name: RegionOne
+        username: mariadb-backup-user
+        password: password
+        project_name: service
+        user_domain_name: service
+        project_domain_name: service
+    host_fqdn_override:
+      default: keystone-api
+    path:
+      default: /v3
+    scheme:
+      default: 'http'
+    port:
+      api:
+        default: 5000
