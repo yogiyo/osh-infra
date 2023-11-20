@@ -33,3 +33,20 @@ conf:
         user: k8s
         secret_uuid: 457eb676-33da-42ec-9a8c-9293d545c337
         user_secret_name: csi-rbd-secret
+
+dependencies:
+  dynamic:
+    common:
+      local_image_registry: {}
+      ovn:
+        libvirt:
+          pod: {}
+      openvswitch:
+        libvirt:
+          pod: {}
+      linuxbridge:
+        libvirt:
+          pod: {}
+      sriov:
+        libvirt:
+          pod: {}
