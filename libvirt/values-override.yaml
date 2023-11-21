@@ -27,20 +27,26 @@ images:
     image_repo_sync: docker.io/library/docker:17.07.0
     kubectl: docker.io/bitnami/kubectl:latest
 
+
+
+ceph_client:
+  configmap: ceph-etc
+  user_secret_name: ceph-cinder-keyring
+
+
 conf:
   ceph:
-    enabled: false
-    admin_keyring: null
+    admin_keyring: AQA0clllewY3LRAAFlmuZpxDl5bw0jH3b3a7gg==
     cinder:
-      user: "cinder"
-      keyring: null
-      secret_uuid: 457eb676-33da-42ec-9a8c-9293d545c337
+      # user: "cinder"
+      keyring: AQCPZVtlw2HADBAApD4g6m64aKVZ3o4oAqfskQ==
+      secret_uuid: 9113cb92-a0c8-4178-97bb-d8786b3a0573
       # Cinder Ceph backend that is not configured by the k8s cluter
-      external_ceph:
-        enabled: false
-        user: k8s
-        secret_uuid: 457eb676-33da-42ec-9a8c-9293d545c337
-        user_secret_name: csi-rbd-secret
+      # external_ceph:
+      #   enabled: true
+      #   user: cinder
+      #   secret_uuid: 9113cb92-a0c8-4178-97bb-d8786b3a0573
+      #   user_secret_name: ceph-cinder-keyring
 
 dependencies:
   dynamic:

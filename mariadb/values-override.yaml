@@ -1,7 +1,7 @@
 pod:
   replicas:
-    server: 3
-    ingress: 3
+    server: 1
+    ingress: 1
 
 volume:
   class_name: ceph-rbd
